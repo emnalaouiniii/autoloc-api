@@ -1,4 +1,4 @@
-package tn.esprit.autolocapi.domain.domain;
+package tn.esprit.autolocapi.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -28,7 +28,6 @@ public class Maintenance {
     @Column(length = 255)
     private String description;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_vehicule")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Vehicule vehicule;
 }

@@ -1,4 +1,4 @@
-package tn.esprit.autolocapi.domain.domain;
+package tn.esprit.autolocapi.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -30,11 +30,12 @@ public class Reservation {
     @Column(nullable = false, length = 20)
     private StatutReservation statut;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_client")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Client client;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_vehicule")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Vehicule vehicule;
+
+    @OneToOne(mappedBy = "reservation", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Contrat contrat;
 }
